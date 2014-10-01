@@ -14,6 +14,7 @@ from perso.prog.src.model.labelnom import dropZone
 from perso.prog.src.model.listphotos import draggableList, simple_model
 from perso.prog.src.model.listphotos2 import DropPhotosList, CustomQListWidgetItem
 from perso.prog.src.controller.imageutil import ImageUtil
+import random
 
 
 
@@ -113,7 +114,7 @@ class Test(QtGui.QMainWindow):
             list_etiquette.append(nom)
         
         #on melange la list
-        list_etiquette.sort()
+        random.shuffle(list_etiquette)#sthash.7I9UwiB9.dpuf.sort()
         for nom_etiquette in list_etiquette:
             newzone = dropZone(nom_etiquette, self.listPhotos)
             newzone.setmode(self.modeAction)

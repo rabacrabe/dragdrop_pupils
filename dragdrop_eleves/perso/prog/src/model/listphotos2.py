@@ -116,7 +116,15 @@ class DropPhotosList(QtGui.QListWidget):
         
     def _show_ko(self):
         self.msgBox = QtGui.QMessageBox(self)
-        self.msgBox.setStandardButtons(QtGui.QMessageBox.Ok);
+        #self.msgBox.setStandardButtons(QtGui.QMessageBox.Ok);
+        
+        self.msgBox.setStyleSheet ("QPushButton {background : white;")
+        
+        button = QtGui.QPushButton('RECOMMENCE')
+        button.setMinimumSize(250, 100)
+        button.setStyleSheet ("QPushButton {background : #F2B1E8; font-size:35px;}")  
+        
+        self.msgBox.addButton(button, QtGui.QMessageBox.YesRole)
         
         icon = QtGui.QPixmap("images/KO.png")
         self.msgBox.setIconPixmap(icon)
@@ -124,7 +132,15 @@ class DropPhotosList(QtGui.QListWidget):
         
     def _show_ok(self):
         self.msgBox = QtGui.QMessageBox(self)
-        self.msgBox.setStandardButtons(QtGui.QMessageBox.Ok);
+        #self.msgBox.setStandardButtons(QtGui.QMessageBox.Ok);
+        
+        self.msgBox.setStyleSheet ("QPushButton {background : white;")
+        
+        button = QtGui.QPushButton('BRAVO')
+        button.setMinimumSize(250, 100)
+        button.setStyleSheet ("QPushButton {background : #F2B1E8; font-size:75px;}")  
+        
+        self.msgBox.addButton(button, QtGui.QMessageBox.YesRole)
         
         icon = QtGui.QPixmap("images/OK.png")
         self.msgBox.setIconPixmap(icon)
