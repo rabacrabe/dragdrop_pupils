@@ -29,7 +29,7 @@ class Test(QtGui.QMainWindow):
         self.setWindowIcon(window_icon) 
         
         myQWidget = QtGui.QWidget()
-        myMainBoxLayout = QtGui.QVBoxLayout()
+        myCenterBoxLayout = QtGui.QVBoxLayout()
         myBoxLayout = QtGui.QHBoxLayout()
         self.myBoxLayoutNomsG = QtGui.QVBoxLayout()
         self.myBoxLayoutNomsD = QtGui.QVBoxLayout()
@@ -71,13 +71,32 @@ class Test(QtGui.QMainWindow):
         self.listPhotos.setStyleSheet("background:#34277D;")
         
         
+        self.slider_size = QtGui.QSlider(QtCore.Qt.Horizontal)
+        self.slider_size.setRange(0, 200)
+        self.slider_size.setValue(200)
+        self.slider_size.valueChanged.connect(self.slider_moved)
         
-        myBoxLayout.addLayout(self.myBoxLayoutNomsG)      
-        myBoxLayout.addWidget(self.listPhotos)
+        myCenterBoxLayout.addWidget(self.slider_size)
+        myCenterBoxLayout.addWidget(self.listPhotos)
+        
+        myBoxLayout.addLayout(self.myBoxLayoutNomsG)
+        myBoxLayout.addLayout(myCenterBoxLayout)      
+        #myBoxLayout.addWidget(self.listPhotos)
         myBoxLayout.addLayout(self.myBoxLayoutNomsD)     
 
 
         #myMainBoxLayout.addLayout(myBoxLayout)
+    
+    def slider_moved(self):
+        ""
+        
+        value = self.slider_size.value()
+        print "slider move: {0}".format(value)
+        
+        #new value for list icon size
+        new_height = (150 * int(value)) / 200
+        self.listPhotos.setIconSize(QtCore.QSize(value, new_height))
+        
     
     def createMenu(self):
         #gestion du menu
